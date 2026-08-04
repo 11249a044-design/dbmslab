@@ -1,0 +1,60 @@
+SQL> SELECT FROM * COURSE
+  2  
+SQL> SELECT FROM * COURSE;
+SELECT FROM * COURSE
+       *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> SELECT FROM * COURSE;
+SELECT FROM * COURSE
+       *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> SELECT * FROM COURSE;
+
+ COURSE_ID                                                                      
+----------                                                                      
+COURSE_NAME                                                                     
+--------------------------------------------------------------------------------
+         1                                                                      
+Computer Science                                                                
+                                                                                
+         2                                                                      
+Data Science                                                                    
+                                                                                
+         3                                                                      
+ARTIFICIAL INTELLIGENCE                                                         
+                                                                                
+
+ COURSE_ID                                                                      
+----------                                                                      
+COURSE_NAME                                                                     
+--------------------------------------------------------------------------------
+         4                                                                      
+MACHINE LEARNING                                                                
+                                                                                
+         5                                                                      
+CYBER SECURITY                                                                  
+                                                                                
+
+SQL> DESC STUDENT;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENT_ID                                NOT NULL NUMBER
+ COURSE_ID                                 NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(100)
+ EMAIL                                     NOT NULL VARCHAR2(100)
+ AGE                                                NUMBER
+ GENDER                                             CHAR(1)
+
+SQL> DESC COURSE;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COURSE_ID                                 NOT NULL NUMBER
+ COURSE_NAME                               NOT NULL VARCHAR2(100)
+
+SQL> SPOOL OFF
