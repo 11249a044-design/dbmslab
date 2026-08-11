@@ -1,0 +1,277 @@
+SQL> select * from tab
+  2  
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+TOPPERFORMERS                  TABLE                                            
+STUDENT_SUMMARY                TABLE                                            
+STUDENT_EMPTY                  TABLE                                            
+STUDENT_BACKUP                 TABLE                                            
+STUDENTS                       TABLE                                            
+STUDENT                        TABLE                                            
+DEPARTMENT                     TABLE                                            
+COURSE                         TABLE                                            
+ALUMNI                         TABLE                                            
+AGENT                          TABLE                                            
+AGENCY                         TABLE                                            
+
+11 rows selected.
+
+SQL> select * from course
+  2  
+SQL> select * from course;
+
+ COURSE_ID                                                                      
+----------                                                                      
+COURSE_NAME                                                                     
+--------------------------------------------------------------------------------
+         1                                                                      
+Computer Science                                                                
+                                                                                
+         2                                                                      
+Data Science                                                                    
+                                                                                
+         3                                                                      
+ARTIFICIAL INTELLIGENCE                                                         
+                                                                                
+
+ COURSE_ID                                                                      
+----------                                                                      
+COURSE_NAME                                                                     
+--------------------------------------------------------------------------------
+         4                                                                      
+MACHINE LEARNING                                                                
+                                                                                
+         5                                                                      
+CYBER SECURITY                                                                  
+                                                                                
+
+SQL> select * from student;
+
+no rows selected
+
+SQL> select * from STUDENT;
+
+no rows selected
+
+SQL> create table courses (
+  2  course_id number primarykey,
+  3  course_name varchar2(25)
+  4  );
+course_id number primarykey,
+                 *
+ERROR at line 2:
+ORA-00907: missing right parenthesis 
+
+
+SQL> clear
+SQL> clr scr
+SP2-0042: unknown command "clr scr" - rest of line ignored.
+SQL> clear screen
+
+SQL> create table courses(
+  2  c_id,
+  3  c_nm
+  4  );
+c_id,
+*
+ERROR at line 2:
+ORA-02263: need to specify the datatype for this column 
+
+
+SQL> create table courses(
+  2  c_id number,
+  3  c_nm varchar2(25)
+  4  );
+
+Table created.
+
+SQL> create table student_1(
+  2  s_id number,
+  3  s_name varchar2(20),
+  4  s_age int
+  5  bnxv jhdvb djhv
+  6  
+SQL> 
+SQL> create table student_1(
+  2  s_id number,
+  3  s_name varchar2(20),
+  4  s_age int(2),
+  5  s_gender char,
+  6  s_mail varchar2(50),
+  7  s_course number,
+  8  s_dept varchar2(10)
+  9  );
+s_age int(2),
+         *
+ERROR at line 4:
+ORA-00907: missing right parenthesis 
+
+
+SQL>  create table student_1(
+  2      s_id number,
+  3      s_name varchar2(20),
+  4      s_age int,
+  5      s_gender char,
+  6      s_mail varchar2(50),
+  7      s_course number,
+  8      s_dept varchar2(10)
+  9      );
+
+Table created.
+
+SQL> ALTER TABLE courses ADD CONSTRAINT c_id PRIMARY KEY(id);
+ALTER TABLE courses ADD CONSTRAINT c_id PRIMARY KEY(id)
+                                                    *
+ERROR at line 1:
+ORA-00904: "ID": invalid identifier 
+
+
+SQL> ALTER TABLE courses ADD CONSTRAINT c_id PRIMARY KEY(ID);
+ALTER TABLE courses ADD CONSTRAINT c_id PRIMARY KEY(ID)
+                                                    *
+ERROR at line 1:
+ORA-00904: "ID": invalid identifier 
+
+
+SQL> ALTER TABLE courses ADD CONSTRAINT c_id PRIMARY KEY;
+ALTER TABLE courses ADD CONSTRAINT c_id PRIMARY KEY
+                                                  *
+ERROR at line 1:
+ORA-00906: missing left parenthesis 
+
+
+SQL> ALTER TABLE courses ADD CONSTRAINT courses_pk PRIMARY KEY(c_id);
+
+Table altered.
+
+SQL> ALTER TABLE student_1 ADD CONSTRAINT student1_pk PRIMARY KEY(s_id);
+
+Table altered.
+
+SQL> ALTER TABLE student_1 ADD CONSTRAINT student1_mail_uk UNIQUE(s_mail);
+
+Table altered.
+
+SQL> ALTER TABLE student_1 ADD CONSTRAINT student1_age-nn UNIQUE(s_age);
+ALTER TABLE student_1 ADD CONSTRAINT student1_age-nn UNIQUE(s_age)
+                                                 *
+ERROR at line 1:
+ORA-00904: : invalid identifier 
+
+
+SQL> ALTER TABLE student_1 ADD CONSTRAINT student1_age-nn NOT NULL(s_age);
+ALTER TABLE student_1 ADD CONSTRAINT student1_age-nn NOT NULL(s_age)
+                                                 *
+ERROR at line 1:
+ORA-00904: : invalid identifier 
+
+
+SQL> ALTER TABLE student_1 ADD CONSTRAINT student1_age_nn NOT NULL(s_age);
+ALTER TABLE student_1 ADD CONSTRAINT student1_age_nn NOT NULL(s_age)
+                                                     *
+ERROR at line 1:
+ORA-00904: : invalid identifier 
+
+
+SQL> ALTER TABLE student_1 MODIFY (s_name NOT NULL, s_mail NOT NULL);
+
+Table altered.
+
+SQL> ALTER TABLE student_1
+  2    ADD CONSTRAINT student1_pk PRIMARY KEY(s_id)[cite: 1]
+  3    ADD CONSTRAINT student1_mail_uk UNIQUE(s_mail)[cite: 1]
+  4    ADD CONSTRAINT student1_age_ck CHECK(s_age < 15)[cite: 1]
+  5    ADD CONSTRAINT student1_course_fk FOREIGN KEY(s_course) REFERENCES courses(c_id)[cite: 1]
+  6    MODIFY (s_gender DEFAULT 'M', s_name NOT NULL);[cite: 1]
+  7  
+SQL> ALTER TABLE student_1
+  2    ADD CONSTRAINT student1_pk PRIMARY KEY(s_id)[cite: 1]
+  3    ADD CONSTRAINT student1_mail_uk UNIQUE(s_mail)[cite: 1]
+  4    ADD CONSTRAINT student1_age_ck CHECK(s_age < 15)[cite: 1]
+  5    ADD CONSTRAINT student1_course_fk FOREIGN KEY(s_course) REFERENCES courses(c_id)[cite: 1]
+  6    MODIFY (s_gender DEFAULT 'M', s_name NOT NULL);[cite: 1];
+  ADD CONSTRAINT student1_pk PRIMARY KEY(s_id)[cite: 1]
+                                              *
+ERROR at line 2:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> ALTER TABLE student_1 MODIFY (s_gender DEFAULT 'M', s_name NOT NULL);
+ALTER TABLE student_1 MODIFY (s_gender DEFAULT 'M', s_name NOT NULL)
+                                                    *
+ERROR at line 1:
+ORA-01442: column to be modified to NOT NULL is already NOT NULL 
+
+
+SQL> ALTER TABLE student_1 MODIFY (s_gender DEFAULT 'M');
+
+Table altered.
+
+SQL> ALTER TABLE student_1 MODIFY (s_gender check(s_age >18);
+ALTER TABLE student_1 MODIFY (s_gender check(s_age >18)
+                                                      *
+ERROR at line 1:
+ORA-02438: Column check constraint cannot reference other columns 
+
+
+SQL> ALTER TABLE student_1 MODIFY (s_gender check(s_age >18));
+ALTER TABLE student_1 MODIFY (s_gender check(s_age >18))
+                                                       *
+ERROR at line 1:
+ORA-02438: Column check constraint cannot reference other columns 
+
+
+SQL> ALTER TABLE  student1_course_fk FOREIGN KEY(s_course) REFERENCES courses(c_id);
+ALTER TABLE  student1_course_fk FOREIGN KEY(s_course) REFERENCES courses(c_id)
+                                *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> ALTER TABLE student_1 ADD CONSTRAINT student1_age_ck CHECK(s_age < 15);
+
+Table altered.
+
+SQL> ALTER TABLE student_1 ADD CONSTRAINT student1_course_fk FOREIGN KEY(s_course) REFERENCES courses(c_id);
+
+Table altered.
+
+SQL> ALTER TABLE student_1 MODIFY (s_gender DEFAULT 'M');
+
+Table altered.
+
+SQL> desc student_1;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ S_ID                                      NOT NULL NUMBER
+ S_NAME                                    NOT NULL VARCHAR2(20)
+ S_AGE                                              NUMBER(38)
+ S_GENDER                                           CHAR(1)
+ S_MAIL                                    NOT NULL VARCHAR2(50)
+ S_COURSE                                           NUMBER
+ S_DEPT                                             VARCHAR2(10)
+
+SQL> ALTER TABLE student_1 ADD CONSTRAINT student1_pk PRIMARY KEY(s_id);
+ALTER TABLE student_1 ADD CONSTRAINT student1_pk PRIMARY KEY(s_id)
+                                                 *
+ERROR at line 1:
+ORA-02260: table can have only one primary key 
+
+
+SQL> ALTER TABLE student_1 ADD CONSTRAINT student1_mail_uk UNIQUE(s_mail);
+ALTER TABLE student_1 ADD CONSTRAINT student1_mail_uk UNIQUE(s_mail)
+                                                      *
+ERROR at line 1:
+ORA-02261: such unique or primary key already exists in the table 
+
+
+SQL> ALTER TABLE student_1 ADD CONSTRAINT student1_age_ck CHECK(s_age >17);
+ALTER TABLE student_1 ADD CONSTRAINT student1_age_ck CHECK(s_age >17)
+                                     *
+ERROR at line 1:
+ORA-02264: name already used by an existing constraint 
+
+
+SQL> spool off

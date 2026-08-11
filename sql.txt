@@ -1,0 +1,1041 @@
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+TOPPERFORMERS                  TABLE                                            
+STUDENT_SUMMARY                TABLE                                            
+STUDENT_EMPTY                  TABLE                                            
+STUDENT_BACKUP                 TABLE                                            
+STUDENT_1                      TABLE                                            
+STUDENTS                       TABLE                                            
+STUDENT                        TABLE                                            
+DEPARTMENT                     TABLE                                            
+COURSES                        TABLE                                            
+COURSE                         TABLE                                            
+ALUMNI                         TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+AGENT                          TABLE                                            
+AGENCY                         TABLE                                            
+
+13 rows selected.
+
+SQL> desc student_1;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ S_ID                                      NOT NULL NUMBER
+ S_NAME                                    NOT NULL VARCHAR2(20)
+ S_AGE                                              NUMBER(38)
+ S_GENDER                                           CHAR(1)
+ S_MAIL                                    NOT NULL VARCHAR2(50)
+ S_COURSE                                           NUMBER
+ S_DEPT                                             VARCHAR2(10)
+
+SQL> desc courses;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ C_ID                                      NOT NULL NUMBER
+ C_NM                                               VARCHAR2(25)
+
+SQL>  INSERT INTO courses VALUES (101, 'Computer Science & Eng');
+Enter value for eng: INSERT INTO courses VALUES (102, 'Electronics & Comm Eng');
+old   1:  INSERT INTO courses VALUES (101, 'Computer Science & Eng')
+new   1:  INSERT INTO courses VALUES (101, 'Computer Science INSERT INTO courses VALUES (102, 'Electronics & Comm Eng');')
+SP2-0552: Bind variable "COMM" not declared.
+SQL> INSERT INTO courses VALUES (103, 'Electrical & Elect Eng');
+Enter value for elect: INSERT INTO courses VALUES (104, 'Mechanical Engineering');
+old   1: INSERT INTO courses VALUES (103, 'Electrical & Elect Eng')
+new   1: INSERT INTO courses VALUES (103, 'Electrical INSERT INTO courses VALUES (104, 'Mechanical Engineering'); Eng')
+INSERT INTO courses VALUES (103, 'Electrical INSERT INTO courses VALUES (104, 'Mechanical Engineering'); Eng')
+                                                                               *
+ERROR at line 1:
+ORA-00917: missing comma 
+
+
+SQL> INSERT INTO courses VALUES (105, 'Civil Engineering');
+
+1 row created.
+
+SQL> INSERT INTO courses VALUES (106, 'Mechatronics Eng');
+
+1 row created.
+
+SQL> commit
+  2  
+SQL> commit;
+
+Commit complete.
+
+SQL> INSERT INTO student_1 VALUES (1001, 'Aarav', 12, 'M', 'aarav1001@mail.com', 101, 'CSE');
+INSERT INTO student_1 VALUES (1001, 'Aarav', 12, 'M', 'aarav1001@mail.com', 101, 'CSE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1002, 'Diya', 14, 'F', 'diya1002@mail.com', 102, 'ECE');
+INSERT INTO student_1 VALUES (1002, 'Diya', 14, 'F', 'diya1002@mail.com', 102, 'ECE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1003, 'Kiran', 11, 'M', 'kiran1003@mail.com', 103, 'EEE');
+INSERT INTO student_1 VALUES (1003, 'Kiran', 11, 'M', 'kiran1003@mail.com', 103, 'EEE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1004, 'Ananya', 13, 'F', 'ananya1004@mail.com', 104, 'MECH');
+INSERT INTO student_1 VALUES (1004, 'Ananya', 13, 'F', 'ananya1004@mail.com', 104, 'MECH')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1005, 'Rohan', 10, 'M', 'rohan1005@mail.com', 105, 'CIVIL');
+
+1 row created.
+
+SQL> INSERT INTO student_1 VALUES (1006, 'Riya', 12, 'F', 'riya1006@mail.com', 106, 'MCT');
+
+1 row created.
+
+SQL> INSERT INTO student_1 VALUES (1007, 'Yash', 13, 'M', 'yash1007@mail.com', 101, 'CSE');
+INSERT INTO student_1 VALUES (1007, 'Yash', 13, 'M', 'yash1007@mail.com', 101, 'CSE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1008, 'Isha', 11, 'F', 'isha1008@mail.com', 102, 'ECE');
+INSERT INTO student_1 VALUES (1008, 'Isha', 11, 'F', 'isha1008@mail.com', 102, 'ECE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1009, 'Dev', 14, 'M', 'dev1009@mail.com', 103, 'EEE');
+INSERT INTO student_1 VALUES (1009, 'Dev', 14, 'M', 'dev1009@mail.com', 103, 'EEE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1010, 'Tara', 12, 'F', 'tara1010@mail.com', 104, 'MECH');
+INSERT INTO student_1 VALUES (1010, 'Tara', 12, 'F', 'tara1010@mail.com', 104, 'MECH')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> ```[cite: 1]
+SP2-0734: unknown command beginning "```[cite: ..." - rest of line ignored.
+SQL> 
+SQL> Save them to your database with:
+SP2-0116: Illegal SAVE command
+SQL> 
+SQL> ```sql
+SP2-0042: unknown command "```sql" - rest of line ignored.
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> ```[cite: 1]
+SP2-0734: unknown command beginning "```[cite: ..." - rest of line ignored.
+SQL> 
+SQL> ---
+SQL> 
+SQL> **Want to strictly enforce 4-digit IDs at the database level?**
+SP2-0734: unknown command beginning "**Want to ..." - rest of line ignored.
+SQL> 
+SQL> If you want Oracle to throw an error whenever someone tries to insert an ID that isn't a 4-digit number (i.e., not between 1000 and 9999), run this `CHECK` constraint:
+SP2-0734: unknown command beginning "If you wan..." - rest of line ignored.
+SQL> 
+SQL> ```sql
+SP2-0042: unknown command "```sql" - rest of line ignored.
+SQL> ALTER TABLE student_1 ADD CONSTRAINT student1_id_ck CHECK(s_id BETWEEN 1000 AND 9999);
+
+Table altered.
+
+SQL> ```[cite: 1]
+SP2-0734: unknown command beginning "```[cite: ..." - rest of line ignored.
+SQL> clear screen
+
+SQL> select * from student_1
+  2  
+SQL> select * from student_1;
+
+      S_ID S_NAME                    S_AGE S                                    
+---------- -------------------- ---------- -                                    
+S_MAIL                                               S_COURSE S_DEPT            
+-------------------------------------------------- ---------- ----------        
+      1005 Rohan                        10 M                                    
+rohan1005@mail.com                                        105 CIVIL             
+                                                                                
+      1006 Riya                         12 F                                    
+riya1006@mail.com                                         106 MCT               
+                                                                                
+
+SQL> ALTER TABLE courses ADD CONSTRAINT courses_pk PRIMARY KEY(c_id
+  2  ALTER TABLE student_1 ADD CONSTRAINT student1_pk PRIMARY KEY(s_id);
+ALTER TABLE student_1 ADD CONSTRAINT student1_pk PRIMARY KEY(s_id)
+*
+ERROR at line 2:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ALTER TABLE student_1 ADD CONSTRAINT student1_mail_uk UNIQUE(s_mail);
+ALTER TABLE student_1 ADD CONSTRAINT student1_mail_uk UNIQUE(s_mail)
+                                                      *
+ERROR at line 1:
+ORA-02261: such unique or primary key already exists in the table 
+
+
+SQL> ALTER TABLE courses MODIFY (c_nm NOT NULL);
+
+Table altered.
+
+SQL> -- For a single column (e.g., student name)
+SQL> ALTER TABLE student_1 MODIFY (s_name NOT NULL);
+ALTER TABLE student_1 MODIFY (s_name NOT NULL)
+                              *
+ERROR at line 1:
+ORA-01442: column to be modified to NOT NULL is already NOT NULL 
+
+
+SQL> 
+SQL> -- For multiple columns at once
+SQL> ALTER TABLE student_1 MODIFY (s_name NOT NULL, s_mail NOT NULL);
+ALTER TABLE student_1 MODIFY (s_name NOT NULL, s_mail NOT NULL)
+                              *
+ERROR at line 1:
+ORA-01442: column to be modified to NOT NULL is already NOT NULL 
+
+
+SQL> ALTER TABLE student_1
+  2    ADD CONSTRAINT student1_pk PRIMARY KEY(s_id)[cite: 1]
+  3    ADD CONSTRAINT student1_mail_uk UNIQUE(s_mail)[cite: 1]
+  4    ADD CONSTRAINT student1_age_ck CHECK(s_age < 15)[cite: 1]
+  5    ADD CONSTRAINT student1_course_fk FOREIGN KEY(s_course) REFERENCES courses(c_id)[cite: 1]
+  6  
+SQL>   MODIFY (s_gender DEFAULT 'M', s_name NOT NULL);[cite: 1]
+SP2-0734: unknown command beginning "MODIFY (s_..." - rest of line ignored.
+SQL> 
+SQL> 
+SQL> INSERT INTO courses VALUES (101, 'Computer Science & Eng');
+Enter value for eng: INSERT INTO courses VALUES (102, 'Electronics & Comm Eng');
+old   1: INSERT INTO courses VALUES (101, 'Computer Science & Eng')
+new   1: INSERT INTO courses VALUES (101, 'Computer Science INSERT INTO courses VALUES (102, 'Electronics & Comm Eng');')
+SP2-0552: Bind variable "COMM" not declared.
+SQL> INSERT INTO courses VALUES (103, 'Electrical & Elect Eng');
+Enter value for elect: INSERT INTO courses VALUES (104, 'Mechanical Engineering');
+old   1: INSERT INTO courses VALUES (103, 'Electrical & Elect Eng')
+new   1: INSERT INTO courses VALUES (103, 'Electrical INSERT INTO courses VALUES (104, 'Mechanical Engineering'); Eng')
+INSERT INTO courses VALUES (103, 'Electrical INSERT INTO courses VALUES (104, 'Mechanical Engineering'); Eng')
+                                                                               *
+ERROR at line 1:
+ORA-00917: missing comma 
+
+
+SQL> INSERT INTO courses VALUES (105, 'Civil Engineering');
+INSERT INTO courses VALUES (105, 'Civil Engineering')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.COURSES_PK) violated 
+
+
+SQL> INSERT INTO courses VALUES (106, 'Mechatronics Eng');
+INSERT INTO courses VALUES (106, 'Mechatronics Eng')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.COURSES_PK) violated 
+
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> INSERT INTO student_1 VALUES (1001, 'Aarav', 12, 'M', 'aarav1001@mail.com', 101, 'CSE');
+INSERT INTO student_1 VALUES (1001, 'Aarav', 12, 'M', 'aarav1001@mail.com', 101, 'CSE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1002, 'Diya', 14, 'F', 'diya1002@mail.com', 102, 'ECE');
+INSERT INTO student_1 VALUES (1002, 'Diya', 14, 'F', 'diya1002@mail.com', 102, 'ECE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1003, 'Kiran', 11, 'M', 'kiran1003@mail.com', 103, 'EEE');
+INSERT INTO student_1 VALUES (1003, 'Kiran', 11, 'M', 'kiran1003@mail.com', 103, 'EEE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1004, 'Ananya', 13, 'F', 'ananya1004@mail.com', 104, 'MECH');
+INSERT INTO student_1 VALUES (1004, 'Ananya', 13, 'F', 'ananya1004@mail.com', 104, 'MECH')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1005, 'Rohan', 10, 'M', 'rohan1005@mail.com', 105, 'CIVIL');
+INSERT INTO student_1 VALUES (1005, 'Rohan', 10, 'M', 'rohan1005@mail.com', 105, 'CIVIL')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.STUDENT1_PK) violated 
+
+
+SQL> INSERT INTO student_1 VALUES (1006, 'Riya', 12, 'F', 'riya1006@mail.com', 106, 'MCT');
+INSERT INTO student_1 VALUES (1006, 'Riya', 12, 'F', 'riya1006@mail.com', 106, 'MCT')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.STUDENT1_PK) violated 
+
+
+SQL> INSERT INTO student_1 VALUES (1007, 'Yash', 13, 'M', 'yash1007@mail.com', 101, 'CSE');
+INSERT INTO student_1 VALUES (1007, 'Yash', 13, 'M', 'yash1007@mail.com', 101, 'CSE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1008, 'Isha', 11, 'F', 'isha1008@mail.com', 102, 'ECE');
+INSERT INTO student_1 VALUES (1008, 'Isha', 11, 'F', 'isha1008@mail.com', 102, 'ECE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1009, 'Dev', 14, 'M', 'dev1009@mail.com', 103, 'EEE');
+INSERT INTO student_1 VALUES (1009, 'Dev', 14, 'M', 'dev1009@mail.com', 103, 'EEE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1010, 'Tara', 12, 'F', 'tara1010@mail.com', 104, 'MECH');
+INSERT INTO student_1 VALUES (1010, 'Tara', 12, 'F', 'tara1010@mail.com', 104, 'MECH')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> 
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> ALTER TABLE student_1 ADD CONSTRAINT student1_id_ck CHECK(s_id BETWEEN 1000 AND 9999);
+ALTER TABLE student_1 ADD CONSTRAINT student1_id_ck CHECK(s_id BETWEEN 1000 AND 9999)
+                                     *
+ERROR at line 1:
+ORA-02264: name already used by an existing constraint 
+
+
+SQL> 
+SQL> INSERT INTO student_1 VALUES (1001, 'Aarav', 12, 'M', 'aarav1001@mail.com', 101, 'CSE');
+INSERT INTO student_1 VALUES (1001, 'Aarav', 12, 'M', 'aarav1001@mail.com', 101, 'CSE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1002, 'Diya', 14, 'F', 'diya1002@mail.com', 102, 'ECE');
+INSERT INTO student_1 VALUES (1002, 'Diya', 14, 'F', 'diya1002@mail.com', 102, 'ECE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1003, 'Kiran', 11, 'M', 'kiran1003@mail.com', 103, 'EEE');
+INSERT INTO student_1 VALUES (1003, 'Kiran', 11, 'M', 'kiran1003@mail.com', 103, 'EEE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1004, 'Ananya', 13, 'F', 'ananya1004@mail.com', 104, 'MECH');
+INSERT INTO student_1 VALUES (1004, 'Ananya', 13, 'F', 'ananya1004@mail.com', 104, 'MECH')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1005, 'Rohan', 10, 'M', 'rohan1005@mail.com', 105, 'CIVIL');
+INSERT INTO student_1 VALUES (1005, 'Rohan', 10, 'M', 'rohan1005@mail.com', 105, 'CIVIL')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.STUDENT1_PK) violated 
+
+
+SQL> INSERT INTO student_1 VALUES (1006, 'Riya', 12, 'F', 'riya1006@mail.com', 106, 'MCT');
+INSERT INTO student_1 VALUES (1006, 'Riya', 12, 'F', 'riya1006@mail.com', 106, 'MCT')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.STUDENT1_PK) violated 
+
+
+SQL> INSERT INTO student_1 VALUES (1007, 'Yash', 13, 'M', 'yash1007@mail.com', 101, 'CSE');
+INSERT INTO student_1 VALUES (1007, 'Yash', 13, 'M', 'yash1007@mail.com', 101, 'CSE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1008, 'Isha', 11, 'F', 'isha1008@mail.com', 102, 'ECE');
+INSERT INTO student_1 VALUES (1008, 'Isha', 11, 'F', 'isha1008@mail.com', 102, 'ECE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1009, 'Dev', 14, 'M', 'dev1009@mail.com', 103, 'EEE');
+INSERT INTO student_1 VALUES (1009, 'Dev', 14, 'M', 'dev1009@mail.com', 103, 'EEE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1010, 'Tara', 12, 'F', 'tara1010@mail.com', 104, 'MECH');
+INSERT INTO student_1 VALUES (1010, 'Tara', 12, 'F', 'tara1010@mail.com', 104, 'MECH')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> 
+SQL> INSERT INTO courses VALUES (101, 'Computer Science & Eng');
+Enter value for eng: INSERT INTO courses VALUES (102, 'Electronics & Comm Eng');
+old   1: INSERT INTO courses VALUES (101, 'Computer Science & Eng')
+new   1: INSERT INTO courses VALUES (101, 'Computer Science INSERT INTO courses VALUES (102, 'Electronics & Comm Eng');')
+SP2-0552: Bind variable "COMM" not declared.
+SQL> INSERT INTO courses VALUES (103, 'Electrical & Elect Eng');
+Enter value for elect: INSERT INTO courses VALUES (104, 'Mechanical Engineering');
+old   1: INSERT INTO courses VALUES (103, 'Electrical & Elect Eng')
+new   1: INSERT INTO courses VALUES (103, 'Electrical INSERT INTO courses VALUES (104, 'Mechanical Engineering'); Eng')
+INSERT INTO courses VALUES (103, 'Electrical INSERT INTO courses VALUES (104, 'Mechanical Engineering'); Eng')
+                                                                               *
+ERROR at line 1:
+ORA-00917: missing comma 
+
+
+SQL> INSERT INTO courses VALUES (105, 'Civil Engineering');
+INSERT INTO courses VALUES (105, 'Civil Engineering')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.COURSES_PK) violated 
+
+
+SQL> INSERT INTO courses VALUES (106, 'Mechatronics Eng');
+INSERT INTO courses VALUES (106, 'Mechatronics Eng')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.COURSES_PK) violated 
+
+
+SQL> 
+SQL> 
+SQL> INSERT INTO student_1 VALUES (1001, 'Aarav', 12, 'M', 'aarav1001@mail.com', 101, 'CSE');
+INSERT INTO student_1 VALUES (1001, 'Aarav', 12, 'M', 'aarav1001@mail.com', 101, 'CSE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1002, 'Diya', 14, 'F', 'diya1002@mail.com', 102, 'ECE');
+INSERT INTO student_1 VALUES (1002, 'Diya', 14, 'F', 'diya1002@mail.com', 102, 'ECE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1003, 'Kiran', 11, 'M', 'kiran1003@mail.com', 103, 'EEE');
+INSERT INTO student_1 VALUES (1003, 'Kiran', 11, 'M', 'kiran1003@mail.com', 103, 'EEE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1004, 'Ananya', 13, 'F', 'ananya1004@mail.com', 104, 'MECH');
+INSERT INTO student_1 VALUES (1004, 'Ananya', 13, 'F', 'ananya1004@mail.com', 104, 'MECH')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1005, 'Rohan', 10, 'M', 'rohan1005@mail.com', 105, 'CIVIL');
+INSERT INTO student_1 VALUES (1005, 'Rohan', 10, 'M', 'rohan1005@mail.com', 105, 'CIVIL')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.STUDENT1_PK) violated 
+
+
+SQL> INSERT INTO student_1 VALUES (1006, 'Riya', 12, 'F', 'riya1006@mail.com', 106, 'MCT');
+INSERT INTO student_1 VALUES (1006, 'Riya', 12, 'F', 'riya1006@mail.com', 106, 'MCT')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.STUDENT1_PK) violated 
+
+
+SQL> INSERT INTO student_1 VALUES (1007, 'Yash', 13, 'M', 'yash1007@mail.com', 101, 'CSE');
+INSERT INTO student_1 VALUES (1007, 'Yash', 13, 'M', 'yash1007@mail.com', 101, 'CSE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1008, 'Isha', 11, 'F', 'isha1008@mail.com', 102, 'ECE');
+INSERT INTO student_1 VALUES (1008, 'Isha', 11, 'F', 'isha1008@mail.com', 102, 'ECE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1009, 'Dev', 14, 'M', 'dev1009@mail.com', 103, 'EEE');
+INSERT INTO student_1 VALUES (1009, 'Dev', 14, 'M', 'dev1009@mail.com', 103, 'EEE')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO student_1 VALUES (1010, 'Tara', 12, 'F', 'tara1010@mail.com', 104, 'MECH');
+INSERT INTO student_1 VALUES (1010, 'Tara', 12, 'F', 'tara1010@mail.com', 104, 'MECH')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A044.STUDENT1_COURSE_FK) violated - parent key 
+not found 
+
+
+SQL> 
+SQL> COMMIT;INSERT INTO courses VALUES (101, 'Computer Science & Eng');INSERT INTO courses VALUES (102, 'Electronics & Comm Eng');INSERT INTO courses VALUES (103, 'Electrical & Elect Eng');INSERT INTO courses VALUES (104, 'Mechanical Engineering');INSERT INTO courses VALUES (105, 'Civil Engineering');INSERT INTO courses VALUES (106, 'Mechatronics Eng');COMMIT;
+Enter value for eng: 
+Enter value for comm: 
+Enter value for elect: 
+old   1: COMMIT;INSERT INTO courses VALUES (101, 'Computer Science & Eng');INSERT INTO courses VALUES (102, 'Electronics & Comm Eng');INSERT INTO courses VALUES (103, 'Electrical & Elect Eng');INSERT INTO courses VALUES (104, 'Mechanical Engineering');INSERT INTO courses VALUES (105, 'Civil Engineering');INSERT INTO courses VALUES (106, 'Mechatronics Eng');COMMIT
+new   1: COMMIT;INSERT INTO courses VALUES (101, 'Computer Science ');INSERT INTO courses VALUES (102, 'Electronics  Eng');INSERT INTO courses VALUES (103, 'Electrical  Eng');INSERT INTO courses VALUES (104, 'Mechanical Engineering');INSERT INTO courses VALUES (105, 'Civil Engineering');INSERT INTO courses VALUES (106, 'Mechatronics Eng');COMMIT
+COMMIT;INSERT INTO courses VALUES (101, 'Computer Science ');INSERT INTO courses VALUES (102, 'Electronics  Eng');INSERT INTO courses VALUES (103, 'Electrical  Eng');INSERT INTO courses VALUES (104, 'Mechanical Engineering');INSERT INTO courses VALUES (105, 'Civil Engineering');INSERT INTO courses VALUES (106, 'Mechatronics Eng');COMMIT
+      *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> INSERT INTO courses VALUES (101, 'Computer Science & Eng');INSERT INTO courses VALUES (102, 'Electronics & Comm Eng');INSERT INTO courses VALUES (103, 'Electrical & Elect Eng');INSERT INTO courses VALUES (104, 'Mechanical Engineering');INSERT INTO courses VALUES (105, 'Civil Engineering');INSERT INTO courses VALUES (106, 'Mechatronics Eng');
+Enter value for eng: 101
+Enter value for comm: 102
+Enter value for elect: 103
+old   1: INSERT INTO courses VALUES (101, 'Computer Science & Eng');INSERT INTO courses VALUES (102, 'Electronics & Comm Eng');INSERT INTO courses VALUES (103, 'Electrical & Elect Eng');INSERT INTO courses VALUES (104, 'Mechanical Engineering');INSERT INTO courses VALUES (105, 'Civil Engineering');INSERT INTO courses VALUES (106, 'Mechatronics Eng')
+new   1: INSERT INTO courses VALUES (101, 'Computer Science 101');INSERT INTO courses VALUES (102, 'Electronics 102 Eng');INSERT INTO courses VALUES (103, 'Electrical 103 Eng');INSERT INTO courses VALUES (104, 'Mechanical Engineering');INSERT INTO courses VALUES (105, 'Civil Engineering');INSERT INTO courses VALUES (106, 'Mechatronics Eng')
+INSERT INTO courses VALUES (101, 'Computer Science 101');INSERT INTO courses VALUES (102, 'Electronics 102 Eng');INSERT INTO courses VALUES (103, 'Electrical 103 Eng');INSERT INTO courses VALUES (104, 'Mechanical Engineering');INSERT INTO courses VALUES (105, 'Civil Engineering');INSERT INTO courses VALUES (106, 'Mechatronics Eng')
+                                                        *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> INSERT INTO courses VALUES (101, 'Computer Science & Eng');
+Enter value for eng: INSERT INTO courses VALUES (102, 'Electronics & Comm Eng');
+old   1: INSERT INTO courses VALUES (101, 'Computer Science & Eng')
+new   1: INSERT INTO courses VALUES (101, 'Computer Science INSERT INTO courses VALUES (102, 'Electronics & Comm Eng');')
+SP2-0552: Bind variable "COMM" not declared.
+SQL> INSERT INTO courses VALUES (103, 'Electrical & Elect Eng');
+Enter value for elect: INSERT INTO courses VALUES (104, 'Mechanical Engineering');
+old   1: INSERT INTO courses VALUES (103, 'Electrical & Elect Eng')
+new   1: INSERT INTO courses VALUES (103, 'Electrical INSERT INTO courses VALUES (104, 'Mechanical Engineering'); Eng')
+INSERT INTO courses VALUES (103, 'Electrical INSERT INTO courses VALUES (104, 'Mechanical Engineering'); Eng')
+                                                                               *
+ERROR at line 1:
+ORA-00917: missing comma 
+
+
+SQL> INSERT INTO courses VALUES (105, 'Civil Engineering');
+INSERT INTO courses VALUES (105, 'Civil Engineering')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.COURSES_PK) violated 
+
+
+SQL> INSERT INTO courses VALUES (106, 'Mechatronics Eng');
+INSERT INTO courses VALUES (106, 'Mechatronics Eng')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.COURSES_PK) violated 
+
+
+SQL> desc courses;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ C_ID                                      NOT NULL NUMBER
+ C_NM                                      NOT NULL VARCHAR2(25)
+
+SQL> INSERT INTO courses VALUES (101, 'Computer Science and Eng');
+
+1 row created.
+
+SQL> INSERT INTO courses VALUES (102, 'Electronics and Comm Eng');
+
+1 row created.
+
+SQL> INSERT INTO courses VALUES (103, 'Electrical and Elect Eng');
+
+1 row created.
+
+SQL> INSERT INTO courses VALUES (104, 'Mechanical Engineering');
+
+1 row created.
+
+SQL> INSERT INTO courses VALUES (105, 'Civil Engineering');
+INSERT INTO courses VALUES (105, 'Civil Engineering')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.COURSES_PK) violated 
+
+
+SQL> INSERT INTO courses VALUES (106, 'Mechatronics Eng');
+INSERT INTO courses VALUES (106, 'Mechatronics Eng')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.COURSES_PK) violated 
+
+
+SQL> select * from courses;
+
+      C_ID C_NM                                                                 
+---------- -------------------------                                            
+       105 Civil Engineering                                                    
+       106 Mechatronics Eng                                                     
+       101 Computer Science and Eng                                             
+       102 Electronics and Comm Eng                                             
+       103 Electrical and Elect Eng                                             
+       104 Mechanical Engineering                                               
+
+6 rows selected.
+
+SQL> select * from student_1;
+
+      S_ID S_NAME                    S_AGE S                                    
+---------- -------------------- ---------- -                                    
+S_MAIL                                               S_COURSE S_DEPT            
+-------------------------------------------------- ---------- ----------        
+      1005 Rohan                        10 M                                    
+rohan1005@mail.com                                        105 CIVIL             
+                                                                                
+      1006 Riya                         12 F                                    
+riya1006@mail.com                                         106 MCT               
+                                                                                
+
+SQL> drop student_1;
+drop student_1
+     *
+ERROR at line 1:
+ORA-00950: invalid DROP option 
+
+
+SQL> DROP student_1
+  2  
+SQL> DROP student_1;
+DROP student_1
+     *
+ERROR at line 1:
+ORA-00950: invalid DROP option 
+
+
+SQL> DROP TABLE student_1 CASCADE CONSTRAINTS;
+
+Table dropped.
+
+SQL> CREATE TABLE student_1 (
+  2    s_id NUMBER,
+  3    s_name VARCHAR2(20),
+  4    s_age INT,
+  5    s_gender CHAR,
+  6    s_mail VARCHAR2(50),
+  7    s_course NUMBER
+  8  );
+
+Table created.
+
+SQL> 
+SQL> ALTER TABLE student_1 ADD CONSTRAINT student1_pk PRIMARY KEY(s_id);
+
+Table altered.
+
+SQL> ALTER TABLE student_1 ADD CONSTRAINT student1_mail_uk UNIQUE(s_mail);
+
+Table altered.
+
+SQL> ALTER TABLE student_1 ADD CONSTRAINT student1_age_ck CHECK(s_age < 15);
+
+Table altered.
+
+SQL> ALTER TABLE student_1 ADD CONSTRAINT student1_course_fk FOREIGN KEY(s_course) REFERENCES courses(c_id);
+
+Table altered.
+
+SQL> ALTER TABLE student_1 MODIFY (s_gender DEFAULT 'M', s_name NOT NULL);
+
+Table altered.
+
+SQL> INSERT INTO student_1 VALUES (1001, 'Aarav', 12, 'M', 'aarav1001@mail.com', 101, 'CSE');
+INSERT INTO student_1 VALUES (1001, 'Aarav', 12, 'M', 'aarav1001@mail.com', 101, 'CSE')
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> INSERT INTO student_1 VALUES (1002, 'Diya', 14, 'F', 'diya1002@mail.com', 102, 'ECE');
+INSERT INTO student_1 VALUES (1002, 'Diya', 14, 'F', 'diya1002@mail.com', 102, 'ECE')
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> INSERT INTO student_1 VALUES (1003, 'Kiran', 11, 'M', 'kiran1003@mail.com', 103, 'EEE');
+INSERT INTO student_1 VALUES (1003, 'Kiran', 11, 'M', 'kiran1003@mail.com', 103, 'EEE')
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> INSERT INTO student_1 VALUES (1004, 'Ananya', 13, 'F', 'ananya1004@mail.com', 104, 'MECH');
+INSERT INTO student_1 VALUES (1004, 'Ananya', 13, 'F', 'ananya1004@mail.com', 104, 'MECH')
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> INSERT INTO student_1 VALUES (1005, 'Rohan', 10, 'M', 'rohan1005@mail.com', 105, 'CIVIL');
+INSERT INTO student_1 VALUES (1005, 'Rohan', 10, 'M', 'rohan1005@mail.com', 105, 'CIVIL')
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> INSERT INTO student_1 VALUES (1006, 'Riya', 12, 'F', 'riya1006@mail.com', 106, 'MCT');
+INSERT INTO student_1 VALUES (1006, 'Riya', 12, 'F', 'riya1006@mail.com', 106, 'MCT')
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> INSERT INTO student_1 VALUES (1007, 'Yash', 13, 'M', 'yash1007@mail.com', 101, 'CSE');
+INSERT INTO student_1 VALUES (1007, 'Yash', 13, 'M', 'yash1007@mail.com', 101, 'CSE')
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> INSERT INTO student_1 VALUES (1008, 'Isha', 11, 'F', 'isha1008@mail.com', 102, 'ECE');
+INSERT INTO student_1 VALUES (1008, 'Isha', 11, 'F', 'isha1008@mail.com', 102, 'ECE')
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> INSERT INTO student_1 VALUES (1009, 'Dev', 14, 'M', 'dev1009@mail.com', 103, 'EEE');
+INSERT INTO student_1 VALUES (1009, 'Dev', 14, 'M', 'dev1009@mail.com', 103, 'EEE')
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> INSERT INTO student_1 VALUES (1001, 'Aarav', 12, 'M', 'aarav1001@mail.com', 101 );
+
+1 row created.
+
+SQL> INSERT INTO student_1 VALUES (1002, 'Diya', 14, 'F', 'diya1002@mail.com', 102 );
+
+1 row created.
+
+SQL> INSERT INTO student_1 VALUES (1003, 'Kiran', 11, 'M', 'kiran1003@mail.com', 103 );
+
+1 row created.
+
+SQL> INSERT INTO student_1 VALUES (1004, 'Ananya', 13, 'F', 'ananya1004@mail.com', 104 );
+
+1 row created.
+
+SQL> INSERT INTO student_1 VALUES (1005, 'Rohan', 10, 'M', 'rohan1005@mail.com', 105 );
+
+1 row created.
+
+SQL> INSERT INTO student_1 VALUES (1006, 'Riya', 12, 'F', 'riya1006@mail.com', 106 );
+
+1 row created.
+
+SQL> INSERT INTO student_1 VALUES (1007, 'Yash', 13, 'M', 'yash1007@mail.com', 101 );
+
+1 row created.
+
+SQL> INSERT INTO student_1 VALUES (1008, 'Isha', 11, 'F', 'isha1008@mail.com', 102 );
+
+1 row created.
+
+SQL> INSERT INTO student_1 VALUES (1009, 'Dev', 14, 'M', 'dev1009@mail.com', 103);
+
+1 row created.
+
+SQL> INSERT INTO student_1 VALUES (1010, 'Tara', 12, 'F', 'tara1010@mail.com', 104);
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from student_1;
+
+      S_ID S_NAME                    S_AGE S                                    
+---------- -------------------- ---------- -                                    
+S_MAIL                                               S_COURSE                   
+-------------------------------------------------- ----------                   
+      1001 Aarav                        12 M                                    
+aarav1001@mail.com                                        101                   
+                                                                                
+      1002 Diya                         14 F                                    
+diya1002@mail.com                                         102                   
+                                                                                
+      1003 Kiran                        11 M                                    
+kiran1003@mail.com                                        103                   
+                                                                                
+
+      S_ID S_NAME                    S_AGE S                                    
+---------- -------------------- ---------- -                                    
+S_MAIL                                               S_COURSE                   
+-------------------------------------------------- ----------                   
+      1004 Ananya                       13 F                                    
+ananya1004@mail.com                                       104                   
+                                                                                
+      1005 Rohan                        10 M                                    
+rohan1005@mail.com                                        105                   
+                                                                                
+      1006 Riya                         12 F                                    
+riya1006@mail.com                                         106                   
+                                                                                
+
+      S_ID S_NAME                    S_AGE S                                    
+---------- -------------------- ---------- -                                    
+S_MAIL                                               S_COURSE                   
+-------------------------------------------------- ----------                   
+      1007 Yash                         13 M                                    
+yash1007@mail.com                                         101                   
+                                                                                
+      1008 Isha                         11 F                                    
+isha1008@mail.com                                         102                   
+                                                                                
+      1009 Dev                          14 M                                    
+dev1009@mail.com                                          103                   
+                                                                                
+
+      S_ID S_NAME                    S_AGE S                                    
+---------- -------------------- ---------- -                                    
+S_MAIL                                               S_COURSE                   
+-------------------------------------------------- ----------                   
+      1010 Tara                         12 F                                    
+tara1010@mail.com                                         104                   
+                                                                                
+
+10 rows selected.
+
+SQL> select * from courses;
+
+      C_ID C_NM                                                                 
+---------- -------------------------                                            
+       105 Civil Engineering                                                    
+       106 Mechatronics Eng                                                     
+       101 Computer Science and Eng                                             
+       102 Electronics and Comm Eng                                             
+       103 Electrical and Elect Eng                                             
+       104 Mechanical Engineering                                               
+
+6 rows selected.
+
+SQL> 
+SQL> INSERT INTO student_1 VALUES (1001, 'Aarav', 12, 'M', 'aarav1001@mail.com', 101 );
+INSERT INTO student_1 VALUES (1001, 'Aarav', 12, 'M', 'aarav1001@mail.com', 101 )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.STUDENT1_PK) violated 
+
+
+SQL> INSERT INTO student_1 VALUES (1002, 'Diya', 14, 'F', 'diya1002@mail.com', 102 );
+INSERT INTO student_1 VALUES (1002, 'Diya', 14, 'F', 'diya1002@mail.com', 102 )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.STUDENT1_PK) violated 
+
+
+SQL> INSERT INTO student_1 VALUES (1003, 'Kiran', 11, 'M', 'kiran1003@mail.com', 103 );
+INSERT INTO student_1 VALUES (1003, 'Kiran', 11, 'M', 'kiran1003@mail.com', 103 )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.STUDENT1_PK) violated 
+
+
+SQL> INSERT INTO student_1 VALUES (1004, 'Ananya', 13, 'F', 'ananya1004@mail.com', 104 );
+INSERT INTO student_1 VALUES (1004, 'Ananya', 13, 'F', 'ananya1004@mail.com', 104 )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.STUDENT1_PK) violated 
+
+
+SQL> INSERT INTO student_1 VALUES (1005, 'Rohan', 10, 'M', 'rohan1005@mail.com', 105 );
+INSERT INTO student_1 VALUES (1005, 'Rohan', 10, 'M', 'rohan1005@mail.com', 105 )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.STUDENT1_PK) violated 
+
+
+SQL> INSERT INTO student_1 VALUES (1006, 'Riya', 12, 'F', 'riya1006@mail.com', 106 );
+INSERT INTO student_1 VALUES (1006, 'Riya', 12, 'F', 'riya1006@mail.com', 106 )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.STUDENT1_PK) violated 
+
+
+SQL> INSERT INTO student_1 VALUES (1007, 'Yash', 13, 'M', 'yash1007@mail.com', 101 );
+INSERT INTO student_1 VALUES (1007, 'Yash', 13, 'M', 'yash1007@mail.com', 101 )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.STUDENT1_PK) violated 
+
+
+SQL> INSERT INTO student_1 VALUES (1008, 'Isha', 11, 'F', 'isha1008@mail.com', 102 );
+INSERT INTO student_1 VALUES (1008, 'Isha', 11, 'F', 'isha1008@mail.com', 102 )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.STUDENT1_PK) violated 
+
+
+SQL> INSERT INTO student_1 VALUES (1009, 'Dev', 14, 'M', 'dev1009@mail.com', 103);
+INSERT INTO student_1 VALUES (1009, 'Dev', 14, 'M', 'dev1009@mail.com', 103)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A044.STUDENT1_PK) violated 
+
+
+SQL> clear screen;
+
+SQL> select * from courses;
+
+      C_ID C_NM                                                                 
+---------- -------------------------                                            
+       105 Civil Engineering                                                    
+       106 Mechatronics Eng                                                     
+       101 Computer Science and Eng                                             
+       102 Electronics and Comm Eng                                             
+       103 Electrical and Elect Eng                                             
+       104 Mechanical Engineering                                               
+
+6 rows selected.
+
+SQL> select * from student_1;
+
+      S_ID S_NAME                    S_AGE S                                    
+---------- -------------------- ---------- -                                    
+S_MAIL                                               S_COURSE                   
+-------------------------------------------------- ----------                   
+      1001 Aarav                        12 M                                    
+aarav1001@mail.com                                        101                   
+                                                                                
+      1002 Diya                         14 F                                    
+diya1002@mail.com                                         102                   
+                                                                                
+      1003 Kiran                        11 M                                    
+kiran1003@mail.com                                        103                   
+                                                                                
+
+      S_ID S_NAME                    S_AGE S                                    
+---------- -------------------- ---------- -                                    
+S_MAIL                                               S_COURSE                   
+-------------------------------------------------- ----------                   
+      1004 Ananya                       13 F                                    
+ananya1004@mail.com                                       104                   
+                                                                                
+      1005 Rohan                        10 M                                    
+rohan1005@mail.com                                        105                   
+                                                                                
+      1006 Riya                         12 F                                    
+riya1006@mail.com                                         106                   
+                                                                                
+
+      S_ID S_NAME                    S_AGE S                                    
+---------- -------------------- ---------- -                                    
+S_MAIL                                               S_COURSE                   
+-------------------------------------------------- ----------                   
+      1007 Yash                         13 M                                    
+yash1007@mail.com                                         101                   
+                                                                                
+      1008 Isha                         11 F                                    
+isha1008@mail.com                                         102                   
+                                                                                
+      1009 Dev                          14 M                                    
+dev1009@mail.com                                          103                   
+                                                                                
+
+      S_ID S_NAME                    S_AGE S                                    
+---------- -------------------- ---------- -                                    
+S_MAIL                                               S_COURSE                   
+-------------------------------------------------- ----------                   
+      1010 Tara                         12 F                                    
+tara1010@mail.com                                         104                   
+                                                                                
+
+10 rows selected.
+
+SQL> spool off
