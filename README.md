@@ -1,1 +1,1 @@
-# dbmslab
+#database management system
